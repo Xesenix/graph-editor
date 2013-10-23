@@ -1,0 +1,20 @@
+/* Application wide styles */
+Accordion,Button,ToggleButton,MenuBar,MenuItem,TableView,Label {
+	-fx-font-family: Helvetica;
+	-fx-font-size: 14pt;
+}
+
+.context-menu {
+	-fx-padding: 4px;
+	-fx-background-color: #666;
+	-fx-border-color: #444;
+	-fx-text-fill: #fff;
+	-fx-background-radius: 0;
+}
+
+.menu-item > .label {
+	-fx-padding: 1px;
+	-fx-font-family: Helvetica;
+	-fx-font-size: 14pt;
+	-fx-text-fill: white;
+}

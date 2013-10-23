@@ -1,0 +1,1 @@
+Using javaFX requires http://zenjava.com/javafx/maven/fix-classpath.html

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.input.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.web.*?>
+<?import pl.xesenix.graph_editor.GraphEditorController?>
+<?scenebuilder-classpath-element ../../../../target/classes?>
+<?scenebuilder-preview-i18n-resource ../langs/editor_pl_PL.properties?>
+
+<BorderPane fx:id="view" minHeight="300.0" minWidth="600.0" prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="pl.xesenix.graph_editor.GraphEditorController">
+  <center>
+    <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="TOP_LEFT">
+      <children>
+        <ToolBar fx:id="projectToolBar" minHeight="32.0" prefHeight="32.0" prefWidth="800.0" VBox.vgrow="NEVER">
+          <items>
+            <ToggleButton mnemonicParsing="false" text="%add_node" />
+          </items>
+        </ToolBar>
+        <TabPane fx:id="projectsTabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="ALL_TABS" VBox.vgrow="ALWAYS">
+          <tabs>
+            <Tab text="%welcome">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <children>
+                    <ScrollPane id="ScrollPane" fitToHeight="true" fitToWidth="true" prefHeight="513.0" prefViewportHeight="513.0" prefViewportWidth="578.0" prefWidth="578.0" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="4.0">
+                      <content>
+                        <WebView fx:id="welcomeWebView" prefHeight="500.0" prefWidth="980.0" />
+                      </content>
+                    </ScrollPane>
+                  </children>
+                </AnchorPane>
+              </content>
+            </Tab>
+          </tabs>
+        </TabPane>
+      </children>
+    </VBox>
+  </center>
+  <right>
+    <ScrollPane id="ScrollPane" fitToHeight="true" fitToWidth="true" prefViewportHeight="574.0" prefViewportWidth="250.0">
+      <content>
+        <Accordion maxWidth="320.0" minHeight="-1.0" minWidth="220.0" prefHeight="164.0" prefWidth="250.0">
+          <expandedPane>
+            <TitledPane fx:id="x3" animated="false" expanded="true" text="Project">
+              <content>
+                <ScrollPane id="ScrollPane" fitToHeight="true" fitToWidth="true" pannable="false" prefViewportHeight="482.0" prefViewportWidth="216.0">
+                  <content>
+                    <TableView fx:id="projectTableView" editable="true" prefHeight="200.0" prefWidth="200.0">
+                      <columns>
+                        <TableColumn editable="false" maxWidth="120.0" minWidth="80.0" prefWidth="80.0" sortable="false" text="property" />
+                        <TableColumn maxWidth="180.0" minWidth="120.0" prefWidth="160.0" sortable="false" text="value" />
+                      </columns>
+                    </TableView>
+                  </content>
+                </ScrollPane>
+              </content>
+            </TitledPane>
+          </expandedPane>
+          <panes>
+            <fx:reference source="x3" />
+            <TitledPane animated="false" minHeight="-1.0" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" text="Node manpulation">
+              <content>
+                <VBox id="VBox" alignment="CENTER" spacing="5.0" />
+              </content>
+            </TitledPane>
+            <TitledPane fx:id="x1" animated="false" minHeight="-1.0" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" text="Node properties">
+              <content>
+                <ScrollPane id="ScrollPane" fitToHeight="true" fitToWidth="true" prefViewportHeight="200.0" prefViewportWidth="247.5">
+                  <content>
+                    <TableView editable="true" prefHeight="200.0" prefWidth="-1.0" tableMenuButtonVisible="false">
+                      <columns>
+                        <TableColumn maxWidth="120.0" minWidth="80.0" prefWidth="80.0" sortable="false" text="property" />
+                        <TableColumn maxWidth="5000.0" minWidth="120.0" prefWidth="120.0" sortable="false" text="value" />
+                      </columns>
+                      <contextMenu>
+                        <ContextMenu>
+                          <items>
+                            <MenuItem mnemonicParsing="false" text="add property" />
+                          </items>
+                        </ContextMenu>
+                      </contextMenu>
+                    </TableView>
+                  </content>
+                </ScrollPane>
+              </content>
+            </TitledPane>
+            <TitledPane fx:id="x2" animated="false" expanded="false" text="Node tree">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <children>
+                    <TreeView editable="true" prefHeight="506.0" prefWidth="216.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  </children>
+                </AnchorPane>
+              </content>
+            </TitledPane>
+          </panes>
+        </Accordion>
+      </content>
+    </ScrollPane>
+  </right>
+  <top>
+    <MenuBar fx:id="editorMenuBar" focusTraversable="true" useSystemMenuBar="true">
+      <menus>
+        <Menu mnemonicParsing="false" text="%menu.file">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#newProject" text="%menu.project_new">
+              <accelerator>
+                <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+              </accelerator>
+            </MenuItem>
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="%menu.project_save">
+              <accelerator>
+                <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+              </accelerator>
+            </MenuItem>
+            <MenuItem mnemonicParsing="false" text="%menu.project_save_as">
+              <accelerator>
+                <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+              </accelerator>
+            </MenuItem>
+            <MenuItem mnemonicParsing="false" text="%menu.project_open">
+              <accelerator>
+                <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+              </accelerator>
+            </MenuItem>
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" onAction="#exit" text="%menu.close">
+              <accelerator>
+                <KeyCodeCombination alt="UP" code="Q" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+              </accelerator>
+            </MenuItem>
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="%menu.edit">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Delete" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="%menu.help">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#showAbout" text="%menu.about" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+  </top>
+</BorderPane>
