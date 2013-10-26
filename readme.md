@@ -4,6 +4,7 @@ GraphEditor
 ===========
 
 [GraphEditor project page](http://graph-editor.xesenix.pl/)
+
 [see wiki](https://github.com/Xesenix/graph-editor/wiki/GraphEditor-Wiki)
 
 How to build
