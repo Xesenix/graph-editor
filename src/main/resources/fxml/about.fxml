@@ -7,37 +7,48 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
+<?scenebuilder-stylesheet ../styles/styles.css?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
-  <children>
-    <VBox id="VBox" alignment="TOP_CENTER" prefHeight="400.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-      <children>
-        <ImageView id="logo" fitHeight="200.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" rotate="0.0" VBox.vgrow="NEVER">
-          <image>
-            <Image url="@../images/about_logo.png" preserveRatio="true" smooth="true" />
-          </image>
-        </ImageView>
-        <TextArea disable="false" editable="false" focusTraversable="false" prefWidth="200.0" text="Graph Editor v.0.0.1&#10;Author: Paweł Kapalla, Xesenix contact: graph-editor@xesenix.pl&#10;Project website: http://graph-editor.xesenix.pl" wrapText="true" VBox.vgrow="SOMETIMES">
-          <VBox.margin>
-            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
-          </VBox.margin>
-        </TextArea>
-        <HBox id="HBox" alignment="TOP_RIGHT" spacing="5.0" VBox.vgrow="ALWAYS">
-          <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
-              <image>
-                <Image url="@../images/xesenix_logo.png" />
-              </image>
-              <HBox.margin>
-                <Insets />
-              </HBox.margin>
-            </ImageView>
-          </children>
-          <VBox.margin>
-            <Insets bottom="10.0" left="20.0" right="20.0" />
-          </VBox.margin>
-        </HBox>
-      </children>
-    </VBox>
-  </children>
+<AnchorPane id="AnchorPane" disable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="true"
+	prefHeight="400.0" prefWidth="600.0" snapToPixel="true" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2"
+>
+	<children>
+		<VBox id="VBox" alignment="TOP_CENTER" prefHeight="400.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+			AnchorPane.topAnchor="0.0"
+		>
+			<children>
+				<ImageView id="logo" fitHeight="200.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" rotate="0.0" VBox.vgrow="NEVER">
+					<image>
+						<Image url="@../images/about_logo.png" preserveRatio="true" smooth="true" />
+					</image>
+				</ImageView>
+				<TextArea cache="false" disable="false" editable="false" focusTraversable="false" mouseTransparent="false" pickOnBounds="false" prefWidth="200.0"
+					text="Graph Editor v.0.0.1&#10;Author: Paweł Kapalla, Xesenix contact: graph-editor@xesenix.pl&#10;Project website: http://graph-editor.xesenix.pl"
+					wrapText="true" VBox.vgrow="SOMETIMES"
+				>
+					<VBox.margin>
+						<Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+					</VBox.margin>
+				</TextArea>
+				<HBox id="HBox" alignment="TOP_RIGHT" spacing="5.0" VBox.vgrow="ALWAYS">
+					<children>
+						<ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+							<image>
+								<Image url="@../images/xesenix_logo.png" />
+							</image>
+							<HBox.margin>
+								<Insets />
+							</HBox.margin>
+						</ImageView>
+					</children>
+					<VBox.margin>
+						<Insets bottom="10.0" left="20.0" right="20.0" />
+					</VBox.margin>
+				</HBox>
+			</children>
+		</VBox>
+	</children>
+	<padding>
+		<Insets />
+	</padding>
 </AnchorPane>

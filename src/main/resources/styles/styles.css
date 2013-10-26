@@ -1,7 +1,7 @@
 /* Application wide styles */
 Accordion,Button,ToggleButton,MenuBar,MenuItem,TableView,Label {
 	-fx-font-family: Helvetica;
-	-fx-font-size: 14pt;
+	-fx-font-size: 12pt;
 }
 
 .context-menu {
@@ -15,6 +15,6 @@ Accordion,Button,ToggleButton,MenuBar,MenuItem,TableView,Label {
 .menu-item > .label {
 	-fx-padding: 1px;
 	-fx-font-family: Helvetica;
-	-fx-font-size: 14pt;
+	-fx-font-size: 12pt;
 	-fx-text-fill: white;
 }

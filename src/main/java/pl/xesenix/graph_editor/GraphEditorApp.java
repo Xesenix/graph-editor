@@ -1,35 +1,47 @@
 
 package pl.xesenix.graph_editor;
 
+import java.util.List;
 import java.util.ResourceBundle;
 
-import javafx.application.Application;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.SceneBuilder;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.stage.StageBuilder;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.inject.Guice;
+import pl.xesenix.slf4j.inject.InjectLogger;
+
+import com.cathive.fx.guice.GuiceApplication;
+import com.cathive.fx.guice.GuiceFXMLLoader;
 import com.google.inject.Inject;
-import com.google.inject.Injector;
-import com.google.inject.Key;
+import com.google.inject.Module;
 import com.google.inject.Singleton;
 import com.google.inject.name.Named;
-import com.google.inject.name.Names;
+
 
 @Singleton
-public class GraphEditorApp extends Application
+public class GraphEditorApp extends GuiceApplication
 {
-
+	@InjectLogger
 	private static final Logger log = LoggerFactory.getLogger(GraphEditorApp.class);
-	
-	
+
+
+	@Inject
+	private GuiceFXMLLoader fxmlLoader;
+
+
 	@Inject
 	@Named("application")
-	private ResourceBundle resources;
+	private ResourceBundle appResources;
+
+
+	@Inject
+	@Named("editor")
+	private ResourceBundle editorResources;
 
 
 	public static void main(String[] args) throws Exception
@@ -38,20 +50,32 @@ public class GraphEditorApp extends Application
 	}
 
 
-	public void start(Stage stage) throws Exception
+	public void start(final Stage stage) throws Exception
 	{
-		Injector injector = Guice.createInjector(new GraphEditorProjectModule());
-		
-		resources = injector.getInstance(Key.get(ResourceBundle.class, Names.named("application")));
-		
-		GraphEditorController controller = injector.getInstance(GraphEditorController.class);
+		final Parent root = fxmlLoader.load(getClass().getResource("/fxml/editor.fxml"), editorResources).getRoot();
 
-		Scene scene = new Scene((Parent) controller.getView(), 1240, 860);
-		scene.getStylesheets().add("/styles/styles.css");
-
-		stage.setTitle(resources.getString("app.name"));
-		stage.getIcons().add(new Image(resources.getString("app.icon")));
-		stage.setScene(scene);
+		StageBuilder
+			.create()
+			.title(appResources.getString("app.name")).resizable(false)
+			.scene(SceneBuilder
+				.create()
+				.root(root)
+				.stylesheets("/styles/styles.css")
+				.build()
+			)
+			.icons(new Image(appResources.getString("app.icon")))
+			.resizable(true)
+			.width(1200)
+			.height(800)
+			.applyTo(stage);
+		
 		stage.show();
+	}
+
+
+	@Override
+	public void init(List<Module> modules) throws Exception
+	{
+		modules.add(new GraphEditorProjectModule());
 	}
 }

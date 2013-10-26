@@ -1,9 +1,12 @@
 
 package pl.xesenix.graph_editor;
 
+import java.util.ResourceBundle;
+
 import javafx.beans.property.Property;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Tab;
@@ -12,24 +15,40 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToolBar;
 import javafx.scene.web.WebView;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import org.slf4j.Logger;
-
-import com.google.inject.Inject;
 
 import pl.xesenix.scene.control.cell.SimplePropertyNameValueFactory;
 import pl.xesenix.scene.control.cell.SimplePropertyValueFactory;
 import pl.xesenix.scene.control.cell.TextBoxCellFactory;
 import pl.xesenix.slf4j.inject.InjectLogger;
 
+import com.google.inject.Inject;
+import com.google.inject.Injector;
+import com.google.inject.Key;
+import com.google.inject.name.Named;
+import com.google.inject.name.Names;
+
 
 public class GraphEditorController
 {
 	@InjectLogger
 	private Logger log;
+	
+	
+	@Inject
+	private Injector injector;
 
 
-	@FXML private Node view;
+	@Inject
+	@Named("editor")
+	private ResourceBundle resources;
+
+
+	@FXML
+	private Node view;
 
 
 	@FXML
@@ -51,10 +70,10 @@ public class GraphEditorController
 	@FXML
 	public void newProject()
 	{
-		//log.debug("New project clicked");
+		// log.debug("New project clicked");
 
 		GraphProject project = new GraphProject();
-		project.setName("New project");
+		project.setName(resources.getString("project.new_name"));
 
 		Tab tab = new Tab();
 		tab.textProperty().bind(project.nameProperty());
@@ -72,9 +91,12 @@ public class GraphEditorController
 
 
 	@FXML
-	public void showAbout()
+	public void showAbout(ActionEvent event)
 	{
-
+		Stage stage = injector.getInstance(Key.get(Stage.class, Names.named("about")));
+		stage.initModality(Modality.WINDOW_MODAL);
+		stage.initOwner(view.getScene().getWindow());
+		stage.show();
 	}
 
 
@@ -112,7 +134,7 @@ public class GraphEditorController
 					{
 						GraphProject project = (GraphProject) data;
 
-						//log.debug("Project selected: " + project.getName());
+						// log.debug("Project selected: " + project.getName());
 
 						bindProject(project);
 

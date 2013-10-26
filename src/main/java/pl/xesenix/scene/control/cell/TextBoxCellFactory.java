@@ -40,6 +40,7 @@ public class TextBoxCellFactory implements Callback<TableColumn<Property<String>
 
 				}
 
+				valueField.textProperty().set(getText());
 				valueField.selectAll();
 
 				setGraphic(valueField);
