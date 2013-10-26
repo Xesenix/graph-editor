@@ -3,6 +3,8 @@
 GraphEditor
 ===========
 
+![alt GraphEditor user interface screen](/images/ui_screen_00.png "GraphEditor User Interface")
+
 [GraphEditor project page](http://graph-editor.xesenix.pl/)
 
 [see wiki](https://github.com/Xesenix/graph-editor/wiki/GraphEditor-Wiki)
