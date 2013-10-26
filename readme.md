@@ -1,4 +1,4 @@
-![alt GraphEditor logo](/images/logo.png "GraphEditor")
+![alt GraphEditor logo](/images/logo_transparent.png "GraphEditor")
 
 GraphEditor
 ===========
