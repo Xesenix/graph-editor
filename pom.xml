@@ -53,26 +53,6 @@
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
-				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
-				</configuration>
-			</plugin>
-
-			<!-- Instaling package -->
-			<plugin>
-				<groupId>com.zenjava</groupId>
-				<artifactId>javafx-maven-plugin</artifactId>
-				<version>2.0</version>
-				<configuration>
-					<mainClass>pl.xesenix.graph_editor.GraphEditorApp</mainClass>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
 				<version>2.1</version>
 				<executions>
@@ -96,28 +76,28 @@
 					</execution>
 				</executions>
 			</plugin>
-
+			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>2.4</version>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
 				<configuration>
-					<archive>
-						<index>true</index>
-						<manifest>
-							<mainClass>pl.xesenix.graph_editor.GraphEditorApp</mainClass>
-							<packageName>pl.xesenix.graph_editor</packageName>
-							<addClasspath>true</addClasspath>
-						</manifest>
-						<manifestEntries>
-							<mode>development</mode>
-							<url>${project.url}</url>
-							<key>value</key>
-						</manifestEntries>
-					</archive>
+					<source>1.7</source>
+					<target>1.7</target>
 				</configuration>
 			</plugin>
 
+			<!-- making install bundle -->
+			<plugin>
+				<groupId>com.zenjava</groupId>
+				<artifactId>javafx-maven-plugin</artifactId>
+				<version>2.0</version>
+				<configuration>
+					<mainClass>pl.xesenix.graph_editor.GraphEditorApp</mainClass>
+					<needShortcut>true</needShortcut>
+					
+				</configuration>
+			</plugin>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -126,11 +106,6 @@
 				<configuration>
 					<locales>en,pl</locales>
 				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.9.1</version>
 			</plugin>
 		</plugins>
 	</build>
@@ -179,7 +154,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.8.1</version>
+				<version>2.9.1</version>
 				<configuration>
 					<doclet>org.jboss.apiviz.APIviz</doclet>
 					<docletArtifact>
@@ -200,7 +175,6 @@
 					</additionalparam>
 				</configuration>
 			</plugin>
-
 		</plugins>
 	</reporting>
 
