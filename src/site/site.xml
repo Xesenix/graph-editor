@@ -8,9 +8,6 @@
 			<item name="GraphEditor" href="index.html" />
 		</breadcrumbs>
 
-		<menu name="Graph Editor">
-			<item name="News" href="http://graph-editor.xesenix.pl" />
-		</menu>
 		<menu ref="parent" />
 		<menu ref="reports" />
 		<menu ref="modules" />
