@@ -7,7 +7,7 @@ GraphEditor
 
 [GraphEditor project page](http://graph-editor.xesenix.pl/)
 
-[see wiki](https://github.com/Xesenix/graph-editor/wiki/GraphEditor-Wiki)
+[See wiki](https://github.com/Xesenix/graph-editor/wiki/GraphEditor-Maven)
 
 How to build
 ------------
