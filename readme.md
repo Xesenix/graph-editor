@@ -14,7 +14,7 @@ For more detail information how to use application see:
 
 For information about project development strategies check:
 
-[github wiki](https://github.com/Xesenix/graph-editor/wiki/GraphEditor-Maven)
+[github wiki](https://github.com/Xesenix/graph-editor/wiki)
 
 For builded project documentation check:
 
