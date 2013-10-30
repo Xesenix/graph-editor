@@ -9,6 +9,8 @@ GraphEditor
 
 [See wiki](https://github.com/Xesenix/graph-editor/wiki/GraphEditor-Maven)
 
+[Download](https://sourceforge.net/projects/graph-editor/)
+
 How to build
 ------------
 
