@@ -29,7 +29,7 @@ import com.google.inject.name.Named;
 public class GraphEditorApp extends GuiceApplication
 {
 	@InjectLogger
-	private static final Logger log = LoggerFactory.getLogger(GraphEditorApp.class);
+	private Logger log;
 
 
 	@Inject
@@ -56,15 +56,14 @@ public class GraphEditorApp extends GuiceApplication
 	{
 		log.debug("application start");
 		
-		final Result loader = fxmlLoader.load(getClass().getResource("/fxml/editor.fxml"), editorResources);
-		final Parent root = loader.getRoot();
+		final GraphEditorController controller = (GraphEditorController) fxmlLoader.load(getClass().getResource("/fxml/editor.fxml"), editorResources).getController();
 		
 		StageBuilder
 			.create()
 			.title(appResources.getString("app.name")).resizable(false)
 			.scene(SceneBuilder
 				.create()
-				.root(root)
+				.root((Parent) controller.getView())
 				.stylesheets("/styles/styles.css")
 				.build()
 			)

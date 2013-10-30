@@ -12,7 +12,6 @@ import com.google.inject.spi.TypeListener;
 
 public class Slfj4TypeListener implements TypeListener
 {
-
 	public <I> void hear(TypeLiteral<I> aTypeLiteral, TypeEncounter<I> aTypeEncounter)
 	{
 		for (Field field : aTypeLiteral.getRawType().getDeclaredFields())

@@ -75,7 +75,7 @@ public class GraphEditorController
 	@FXML
 	public void newProject()
 	{
-		//log.debug("New project clicked");
+		log.debug("New project clicked");
 
 		ProjectContext context = injector.getInstance(ProjectContext.class);
 		

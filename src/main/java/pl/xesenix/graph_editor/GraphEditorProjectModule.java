@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+import pl.xesenix.slf4j.inject.Slfj4TypeListener;
 import javafx.scene.Parent;
 import javafx.scene.SceneBuilder;
 import javafx.scene.image.Image;
@@ -14,6 +15,7 @@ import javafx.stage.StageBuilder;
 import com.cathive.fx.guice.GuiceFXMLLoader;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
+import com.google.inject.matcher.Matchers;
 import com.google.inject.name.Named;
 import com.google.inject.name.Names;
 
@@ -30,6 +32,7 @@ public class GraphEditorProjectModule extends AbstractModule
 		bind(ResourceBundle.class).annotatedWith(Names.named("editor")).toInstance(ResourceBundle.getBundle("bundles.editor", locale));
 		bind(ResourceBundle.class).annotatedWith(Names.named("project")).toInstance(ResourceBundle.getBundle("bundles.project", locale));
 		bind(ResourceBundle.class).annotatedWith(Names.named("about")).toInstance(ResourceBundle.getBundle("bundles.about", locale));
+		bindListener(Matchers.any(), new Slfj4TypeListener());
 	}
 	
 	
