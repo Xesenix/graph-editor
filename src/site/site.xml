@@ -5,7 +5,7 @@
 		<head />
 
 		<breadcrumbs>
-			<item name="GraphEditor" href="index.html" />
+			<item name="GraphEditor" href="/" />
 		</breadcrumbs>
 
 		<menu ref="parent" />
