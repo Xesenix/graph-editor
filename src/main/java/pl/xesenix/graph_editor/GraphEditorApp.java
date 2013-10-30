@@ -17,7 +17,9 @@ import pl.xesenix.slf4j.inject.InjectLogger;
 
 import com.cathive.fx.guice.GuiceApplication;
 import com.cathive.fx.guice.GuiceFXMLLoader;
+import com.cathive.fx.guice.GuiceFXMLLoader.Result;
 import com.google.inject.Inject;
+import com.google.inject.Injector;
 import com.google.inject.Module;
 import com.google.inject.Singleton;
 import com.google.inject.name.Named;
@@ -52,8 +54,11 @@ public class GraphEditorApp extends GuiceApplication
 
 	public void start(final Stage stage) throws Exception
 	{
-		final Parent root = fxmlLoader.load(getClass().getResource("/fxml/editor.fxml"), editorResources).getRoot();
-
+		log.debug("application start");
+		
+		final Result loader = fxmlLoader.load(getClass().getResource("/fxml/editor.fxml"), editorResources);
+		final Parent root = loader.getRoot();
+		
 		StageBuilder
 			.create()
 			.title(appResources.getString("app.name")).resizable(false)

@@ -3,7 +3,9 @@ package pl.xesenix.graph_editor;
 
 import java.util.ResourceBundle;
 
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.Property;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -45,6 +47,9 @@ public class GraphEditorController
 	@Inject
 	@Named("editor")
 	private ResourceBundle resources;
+	
+	
+	private ObjectProperty<ProjectContext> currentContext = new SimpleObjectProperty<ProjectContext>(this, "currentContext");
 
 
 	@FXML
@@ -70,16 +75,11 @@ public class GraphEditorController
 	@FXML
 	public void newProject()
 	{
-		// log.debug("New project clicked");
+		//log.debug("New project clicked");
 
-		GraphProject project = new GraphProject();
-		project.setName(resources.getString("project.new_name"));
-
-		Tab tab = new Tab();
-		tab.textProperty().bind(project.nameProperty());
-		tab.setUserData(project);
-
-		projectsTabPane.getTabs().add(tab);
+		ProjectContext context = injector.getInstance(ProjectContext.class);
+		
+		projectsTabPane.getTabs().add(context.getTab());
 	}
 
 
@@ -97,6 +97,11 @@ public class GraphEditorController
 		stage.initModality(Modality.WINDOW_MODAL);
 		stage.initOwner(view.getScene().getWindow());
 		stage.show();
+	}
+	
+	
+	public GraphEditorController()
+	{
 	}
 
 
@@ -130,14 +135,15 @@ public class GraphEditorController
 				{
 					Object data = newValue.getUserData();
 
-					if (data instanceof GraphProject)
+					if (data instanceof ProjectContext)
 					{
-						GraphProject project = (GraphProject) data;
+						ProjectContext context = (ProjectContext) data;
 
 						// log.debug("Project selected: " + project.getName());
 
-						bindProject(project);
-
+						bindProject(context.getProject());
+						currentContext.set(context);
+						
 						return;
 					}
 

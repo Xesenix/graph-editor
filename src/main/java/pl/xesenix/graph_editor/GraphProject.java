@@ -1,6 +1,11 @@
 
 package pl.xesenix.graph_editor;
 
+import java.util.ResourceBundle;
+
+import com.google.inject.Inject;
+import com.google.inject.name.Named;
+
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -15,6 +20,13 @@ public class GraphProject
 
 	private ObservableList<Property<String>> properties;
 
+	
+	@Inject
+	public GraphProject(@Named("project") ResourceBundle resources)
+	{
+		setName(resources.getString("default_name"));
+	}
+	
 
 	public final StringProperty nameProperty()
 	{

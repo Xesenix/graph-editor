@@ -28,6 +28,7 @@ public class GraphEditorProjectModule extends AbstractModule
 		bind(Locale.class).toInstance(locale);
 		bind(ResourceBundle.class).annotatedWith(Names.named("application")).toInstance(ResourceBundle.getBundle("bundles.application", locale));
 		bind(ResourceBundle.class).annotatedWith(Names.named("editor")).toInstance(ResourceBundle.getBundle("bundles.editor", locale));
+		bind(ResourceBundle.class).annotatedWith(Names.named("project")).toInstance(ResourceBundle.getBundle("bundles.project", locale));
 		bind(ResourceBundle.class).annotatedWith(Names.named("about")).toInstance(ResourceBundle.getBundle("bundles.about", locale));
 	}
 	
