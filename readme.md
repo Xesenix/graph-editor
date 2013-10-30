@@ -5,11 +5,24 @@ GraphEditor
 
 ![alt GraphEditor user interface screen](/images/ui_screen_00.png "GraphEditor User Interface")
 
-[GraphEditor project page](http://graph-editor.xesenix.pl/)
+Useful links
+------------
 
-[See wiki](https://github.com/Xesenix/graph-editor/wiki/GraphEditor-Maven)
+For more detail information how to use application see:
 
-[Download](https://sourceforge.net/projects/graph-editor/)
+[GraphEditor project home page](http://graph-editor.xesenix.pl/)
+
+For information about project development strategies check:
+
+[github wiki](https://github.com/Xesenix/graph-editor/wiki/GraphEditor-Maven)
+
+For builded project documentation check:
+
+[project docs](http://graph-editor.xesenix.pl/docs)
+
+For builded example check sourceforge:
+
+[download windows installer](https://sourceforge.net/projects/graph-editor/)
 
 How to build
 ------------
