@@ -6,6 +6,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.control.Tab;
 
 import com.google.inject.Inject;
+import com.google.inject.name.Named;
 
 
 public class ProjectContext
@@ -13,17 +14,14 @@ public class ProjectContext
 	private ObjectProperty<GraphProject> project = new SimpleObjectProperty<GraphProject>(this, "project");
 
 
-	private Tab tab;
+	@Inject
+	private GraphControl graphControl;
 
 
 	@Inject
 	public ProjectContext(GraphProject project)
 	{
 		setProject(project);
-		
-		tab = new Tab();
-		tab.textProperty().bind(getProject().nameProperty());
-		tab.setUserData(this);
 	}
 
 
@@ -45,8 +43,8 @@ public class ProjectContext
 	}
 
 
-	public Tab getTab()
+	public GraphControl getGraphControl()
 	{
-		return this.tab;
+		return this.graphControl;
 	}
 }

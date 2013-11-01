@@ -38,12 +38,7 @@ public class GraphEditorApp extends GuiceApplication
 
 	@Inject
 	@Named("application")
-	private ResourceBundle appResources;
-
-
-	@Inject
-	@Named("editor")
-	private ResourceBundle editorResources;
+	private ResourceBundle resources;
 
 
 	public static void main(String[] args) throws Exception
@@ -56,18 +51,18 @@ public class GraphEditorApp extends GuiceApplication
 	{
 		log.debug("application start");
 		
-		final GraphEditorController controller = (GraphEditorController) fxmlLoader.load(getClass().getResource("/fxml/editor.fxml"), editorResources).getController();
+		final AppController controller = (AppController) fxmlLoader.load(getClass().getResource("/fxml/application.fxml"), resources).getController();
 		
 		StageBuilder
 			.create()
-			.title(appResources.getString("app.name")).resizable(false)
+			.title(resources.getString("app.name")).resizable(false)
 			.scene(SceneBuilder
 				.create()
-				.root((Parent) controller.getView())
+				.root(controller.getView())
 				.stylesheets("/styles/styles.css")
 				.build()
 			)
-			.icons(new Image(appResources.getString("app.icon")))
+			.icons(new Image(resources.getString("app.icon")))
 			.resizable(true)
 			.width(1200)
 			.height(800)

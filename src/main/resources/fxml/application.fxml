@@ -8,19 +8,14 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.web.*?>
-<?import pl.xesenix.graph_editor.GraphEditorController?>
+<?import pl.xesenix.graph_editor.AppController?>
 <?scenebuilder-classpath-element ../../../../target/classes?>
-<?scenebuilder-preview-i18n-resource ../langs/editor_pl_PL.properties?>
+<?scenebuilder-preview-i18n-resource ../bundles/application.properties?>
 
-<BorderPane fx:id="view" minHeight="300.0" minWidth="600.0" prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="pl.xesenix.graph_editor.GraphEditorController">
+<BorderPane fx:id="view" minHeight="300.0" minWidth="600.0" prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="pl.xesenix.graph_editor.AppController">
   <center>
     <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="TOP_LEFT">
       <children>
-        <ToolBar fx:id="projectToolBar" minHeight="32.0" prefHeight="32.0" prefWidth="800.0" VBox.vgrow="NEVER">
-          <items>
-            <ToggleButton mnemonicParsing="false" text="%add_node" />
-          </items>
-        </ToolBar>
         <TabPane fx:id="projectsTabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="ALL_TABS" VBox.vgrow="ALWAYS">
           <tabs>
             <Tab text="%welcome">

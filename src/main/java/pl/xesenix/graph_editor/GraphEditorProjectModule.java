@@ -26,10 +26,8 @@ public class GraphEditorProjectModule extends AbstractModule
 	protected void configure()
 	{
 		Locale locale = new Locale("pl", "PL");
-		bind(String.class).annotatedWith(Names.named("editor.fxml")).toInstance("/fxml/editor.fxml");
 		bind(Locale.class).toInstance(locale);
 		bind(ResourceBundle.class).annotatedWith(Names.named("application")).toInstance(ResourceBundle.getBundle("bundles.application", locale));
-		bind(ResourceBundle.class).annotatedWith(Names.named("editor")).toInstance(ResourceBundle.getBundle("bundles.editor", locale));
 		bind(ResourceBundle.class).annotatedWith(Names.named("project")).toInstance(ResourceBundle.getBundle("bundles.project", locale));
 		bind(ResourceBundle.class).annotatedWith(Names.named("about")).toInstance(ResourceBundle.getBundle("bundles.about", locale));
 		bindListener(Matchers.any(), new Slfj4TypeListener());
@@ -58,7 +56,6 @@ public class GraphEditorProjectModule extends AbstractModule
 		}
 		catch (IOException e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

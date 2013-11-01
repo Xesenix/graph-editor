@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.*?>
+
+<fx:root type="javafx.scene.layout.VBox" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+  <children>
+    <ToolBar VBox.vgrow="NEVER">
+      <items>
+        <Button mnemonicParsing="false" text="Button" />
+        <ToggleButton mnemonicParsing="false" text="ToggleButton" />
+      </items>
+    </ToolBar>
+    <AnchorPane id="AnchorPane" VBox.vgrow="ALWAYS">
+      <children>
+        <ScrollPane id="ScrollPane" fitToHeight="false" fitToWidth="false" prefViewportHeight="200.0" prefViewportWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+          <content>
+            <Pane fx:id="viewport" prefHeight="600.0" prefWidth="800.0" />
+          </content>
+        </ScrollPane>
+      </children>
+    </AnchorPane>
+  </children>
+</fx:root>

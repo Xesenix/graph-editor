@@ -10,7 +10,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
@@ -34,7 +34,7 @@ import com.google.inject.name.Named;
 import com.google.inject.name.Names;
 
 
-public class GraphEditorController
+public class AppController
 {
 	@InjectLogger
 	private Logger log;
@@ -42,26 +42,17 @@ public class GraphEditorController
 	
 	@Inject
 	private Injector injector;
-
-
-	@Inject
-	@Named("editor")
-	private ResourceBundle resources;
 	
 	
 	private ObjectProperty<ProjectContext> currentContext = new SimpleObjectProperty<ProjectContext>(this, "currentContext");
 
 
 	@FXML
-	private Node view;
+	private Parent view;
 
 
 	@FXML
 	private TabPane projectsTabPane;
-
-
-	@FXML
-	private ToolBar projectToolBar;
 
 
 	@FXML
@@ -72,6 +63,12 @@ public class GraphEditorController
 	private WebView welcomeWebView;
 
 
+	public Parent getView()
+	{
+		return view;
+	}
+
+
 	@FXML
 	public void newProject()
 	{
@@ -79,7 +76,12 @@ public class GraphEditorController
 
 		ProjectContext context = injector.getInstance(ProjectContext.class);
 		
-		projectsTabPane.getTabs().add(context.getTab());
+		Tab tab = new Tab();
+		tab.textProperty().bind(context.getProject().nameProperty());
+		tab.setContent(context.getGraphControl());
+		tab.setUserData(context);
+		
+		projectsTabPane.getTabs().add(tab);
 	}
 
 
@@ -100,7 +102,7 @@ public class GraphEditorController
 	}
 	
 	
-	public GraphEditorController()
+	public AppController()
 	{
 	}
 
@@ -117,8 +119,6 @@ public class GraphEditorController
 			projectTableView.setUserData(null);
 			projectTableView.setItems(null);
 		}
-
-		projectToolBar.setVisible(!projectsTabPane.getTabs().isEmpty());
 	}
 
 
@@ -166,11 +166,5 @@ public class GraphEditorController
 
 		propertyValueColumn.setCellValueFactory(new SimplePropertyValueFactory());
 		propertyValueColumn.setCellFactory(new TextBoxCellFactory());
-	}
-
-
-	public Node getView()
-	{
-		return view;
 	}
 }
